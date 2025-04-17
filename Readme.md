@@ -94,11 +94,17 @@ In C++ , Primitive data types are not object which voilates the object oriented 
 
 String is an object in c++. standard string and (string from "<string>" library) are mutable but the string literals are immutable.
 <br>
+```bash 
+const char* str = "Hello, World!";  
+// String literal (Immutable)
+
+```
+<br>
 If we want to concatenate a string and int then it causes error.
 <br>
 We can find the string length with "length()" function and "size()" function. This does not require to include the "string" library.  
 <br>
-we can include use "<string>" library to use the string function.
+we can include "<string>" library to use the string function.
 <br>
 
 ```bash
@@ -116,17 +122,19 @@ cout << greeting2 ; //wello
 
 we can use "max(a,b)" and "min(a,b)" without including "<cmath>" library.
 <br>
-For other math function we need to include "<math>" library. like : sqrt(a)
+For other math function we need to include "<cmath>" library. like : sqrt(a)
 
 # Important Point from Array :
 
-Arrays are mutable.Its size is fixed. 
+Arrays are mutable. Its size is fixed. 
 <br>
 We can calculate size of array by using "sizeof()" function .
 <br>
 sizeof() operator returns the size of a type in bytes.
 <br>
-we learned from the Data Types chapter that an int type is usually 4 bytes, so from the example above, 4 x 5 (4 bytes x 5 elements) = 20 bytes.
+Example: int myNumbers[5] = {10, 20, 30, 40, 50};
+<br>
+we know that an int type is usually 4 bytes, so from the example above, 4 x 5 (4 bytes x 5 elements) = 20 bytes.
 <br>
 To find out how many elements an array has, you have to divide the size of the array by the size of the first element in the array:
 <br>
@@ -184,16 +192,6 @@ struct {
     int year;
   } myCar1, myCar2; // We can add variables by separating them with a comma here
 
-  // Put data into the first structure
-  myCar1.brand = "BMW";
-  myCar1.model = "X5";
-  myCar1.year = 1999;
-
-  // Put data into the second structure
-  myCar2.brand = "Ford";
-  myCar2.model = "Mustang";
-  myCar2.year = 1969;
-
 ````
 
 <br>
@@ -224,9 +222,6 @@ string food = "Pizza";  // food variable
 string &meal = food;    // reference to food
 
 
-
-string food = "Pizza";
-string &meal = food;
 
 cout << food << "\n";  // Outputs Pizza
 cout << meal << "\n";  // Outputs Pizza
@@ -410,18 +405,44 @@ A vector in C++ is a dynamic array provided by the Standard Template Library (ST
 <br>
 Vector is like a sequence container and elements are stored in contiguous memory as same in array. 
 <br>
-In vector there are some functions which provide bound checking like if we have an array of size 5 then if we want to access then using some functios of vectors we can bound check and it will not show error. 
+In vector there are some functions which provide bound checking like if we have an array of size 5 then if we want to access array[5] then using some functions of vectors we can bound check and it will not show error. 
 <br>
 By default it also not provide any bound checking like array. 
 <br>
+```bash 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> v = {10, 20, 30};
+
+    vector<int>::iterator it;
+    for (it = v.begin(); it != v.end(); it++) {
+        cout << *it << " ";  // Output: 10 20 30
+    }
+}
+
+
+
+
+
+// Two D vector :
+vector<vector<int>> vec = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+
+```
 
 
 # Function overloading :
-In Function overloadingM ,multiple functions can have the same name as long as the number and/or type of parameters are different.
+In Function overloading ,multiple functions can have the same name as long as but the number and/or type of parameters are different.
 
 # C++ classes and object and method:
 ```bash 
-class MyClass {        // The class
+class MyClass {         // The class
   public:              // Access specifier
     void myMethod() {  // Method/function defined inside the class
       cout << "Hello World!";
@@ -622,7 +643,9 @@ public:
 
 int main() {
     Complex c1(3, 4), c2(1, 2);
-    Complex c3 = c1 + c2; // Calls overloaded +
+    Complex c3 = c1 + c2; // Calls overloaded + means this calls operator+ method
+
+    // The + operator (overloaded) is called on c1. The operator+ function takes c2 as its parameter.
     c3.display();
 }
 ✅ Now, + works with Complex objects.
@@ -650,6 +673,8 @@ int main() {
 This is achieved through function overriding and virtual functions. The function call is resolved at runtime.
 <br>
 🔹 Function Overriding (Virtual Functions):
+<br>
+A virtual function in C++ is a function that is defined in a base class and is meant to be overridden in a derived class. 
 <br>
 A derived class can override a function from the base class.
 <br>
